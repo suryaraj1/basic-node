@@ -26,12 +26,14 @@ const respondEcho = (req, res) => {
     const { input = '' } = querystring.parse(req.url.split('?').slice(1).join(''));
 
     res.setHeader('Content-Type', 'application/json');
-    res.end(JSON.stringify({
-        normal: input,
-        shouty: input.toUpperCase();
-        characterCount: input.length,
-        backwards: input.split(' ').reverse().join('')
-    }))
+    res.end(
+        JSON.stringify({
+            normal: input,
+            shouty: input.toUpperCase(),
+            characterCount: input.length,
+            backwards: input.split('').reverse().join(''),
+        }),
+    );
 };
 
 const server = http.createServer((req, res) => {
